@@ -1,7 +1,7 @@
-import Card from "../ui/Card";
+import CardTodo from "../ui/CardTodo";
 
-const Todo = ({ children }) => {
-  return <Card>{children}</Card>;
+const Todo = ({ name, time }) => {
+  return <CardTodo name={name} time={time} />;
 };
 
 export default Todo;

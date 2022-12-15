@@ -11,7 +11,13 @@ function Home({ todos }) {
 export function getStaticProps() {
   return {
     props: {
-      todos: ["todo 1", "todo 2", "todo 3", "todo 4", "todo 5"],
+      todos: [
+        { name: "todo 1", time: "15 Dec 2022" },
+        { name: "todo 2", time: "15 Dec 2022" },
+        { name: "todo 3", time: "15 Dec 2022" },
+        { name: "todo 4", time: "15 Dec 2022" },
+        { name: "todo 5", time: "15 Dec 2022" },
+      ],
     },
   };
 }

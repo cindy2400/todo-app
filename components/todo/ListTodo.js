@@ -4,7 +4,7 @@ const ListTodo = ({ todos }) => {
   return (
     <div>
       {todos.map((todo) => (
-        <Todo>{todo}</Todo>
+        <Todo name={todo.name} time={todo.time} />
       ))}
     </div>
   );
