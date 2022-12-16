@@ -1,7 +1,7 @@
 import CardTodo from "../ui/CardTodo";
 
-const Todo = ({ name, time }) => {
-  return <CardTodo name={name} time={time} />;
+const Todo = ({ id, name, time }) => {
+  return <CardTodo id={id} name={name} time={time} />;
 };
 
 export default Todo;

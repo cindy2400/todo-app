@@ -1,6 +1,14 @@
+import { useDispatch } from "react-redux";
+import { todoActions } from "../../store/todo/todo-slice";
 import Button from "./Button";
 
-const CardTodo = ({ name, time }) => {
+const CardTodo = ({ id, name, time }) => {
+  const dispatch = useDispatch();
+
+  const onDeleteTodoHandler = () => {
+    dispatch(todoActions.deleteTodo(id));
+  };
+
   return (
     <div className="box-content p-2 m-6 border-2">
       <div class="flex flex-row ">
@@ -12,7 +20,12 @@ const CardTodo = ({ name, time }) => {
           <Button classname="bg-emerald-500 text-gray-100 ">Checklist</Button>
         </div>
         <div class="basis-1/12 ">
-          <Button classname="bg-rose-600 text-gray-100">Delete</Button>
+          <Button
+            onclick={onDeleteTodoHandler}
+            classname="bg-rose-600 text-gray-100"
+          >
+            Delete
+          </Button>
         </div>
       </div>
     </div>
