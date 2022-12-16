@@ -2,11 +2,19 @@ import { useDispatch } from "react-redux";
 import { todoActions } from "../../store/todo/todo-slice";
 import Button from "./Button";
 
-const CardTodo = ({ id, name, time }) => {
+const CardTodo = ({ id, name, time, isCompleted }) => {
   const dispatch = useDispatch();
 
   const onDeleteTodoHandler = () => {
     dispatch(todoActions.deleteTodo(id));
+  };
+
+  const onIsCompletedHandler = () => {
+    {
+      isCompleted
+        ? dispatch(todoActions.setUncompletedTodo(id))
+        : dispatch(todoActions.setCompletedTodo(id));
+    }
   };
 
   return (
@@ -17,7 +25,14 @@ const CardTodo = ({ id, name, time }) => {
           <p className="text-xs">{time}</p>
         </div>
         <div class="basis-1/12 ">
-          <Button classname="bg-emerald-500 text-gray-100 ">Checklist</Button>
+          <Button
+            onclick={onIsCompletedHandler}
+            classname={`${
+              isCompleted ? "bg-yellow-500" : "bg-emerald-500"
+            } text-gray-100`}
+          >
+            {isCompleted ? "Undo" : "Completed"}
+          </Button>
         </div>
         <div class="basis-1/12 ">
           <Button

@@ -1,22 +1,26 @@
-import { useRef } from "react";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Button from "../../components/ui/Button";
 import { todoActions } from "../../store/todo/todo-slice";
 
 const NewTodo = () => {
-  const todoInputRef = useRef();
+  const [todo, setTodo] = useState("");
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const addNewTodoHandler = (e) => {
     e.preventDefault();
     dispatch(
       todoActions.setTodo({
         id: Math.random(),
-        name: todoInputRef.current.value,
+        name: todo,
         time: Date(),
         isCompleted: false,
       })
     );
+    setTodo("");
+    router.push("/");
   };
 
   return (
@@ -26,7 +30,8 @@ const NewTodo = () => {
         <input
           type="text"
           placeholder="Todo"
-          ref={todoInputRef}
+          onChange={(e) => setTodo(e.target.value)}
+          value={todo}
           className="border-2 h-10 rounded-sm m-5"
         />
         <Button classname="bg-indigo-500 text-gray-100 m-auto">Save</Button>
